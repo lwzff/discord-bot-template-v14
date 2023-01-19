@@ -4,6 +4,9 @@
 This repository includes my personal bot template (all the base that I own and I am using for my current bots).
 
 
+## Documentation
+
+Coming soon..
 
 
 ## Installation

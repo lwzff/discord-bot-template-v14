@@ -24,6 +24,7 @@ After that, install all dependencies with npm:
 
 **Dependencies (in case of any problems):**
 - discord.js
+- mongoose
 - ascii-table
 - dotenv
     

@@ -27,6 +27,9 @@ function loadCommands (client) {
     // Set basic commands on every guild the bot is on.
     client.application.commands.set(commandsArray);
 
+    // Delete all (global) commands.
+    //client.application.commands.delete();
+
     // Set developers commands only on developer guild.
     const developerGuild = client.guilds.cache.get(client.config.developerGuildId);
     developerGuild.commands.set(developerArray)

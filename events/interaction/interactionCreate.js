@@ -22,5 +22,29 @@ module.exports = {
             command.execute(interaction, client);
         }
 
+        // Message context menu
+        if (interaction.isMessageContextMenuCommand()) {
+            const command = client.commands.get(interaction.commandName);
+            if (!command) return await interaction.reply({ content: `This command is outdated.`, ephemeral: true });
+            command.execute(interaction, client);
+        }
+
+        // Autocomplete
+        if (interaction.isAutocomplete()) {
+            const command = interaction.client.commands.get(interaction.commandName);
+            if (!command) return await interaction.reply({ content: `This command is outdated.`, ephemeral: true });
+            await command.autocomplete(interaction);
+        }
+
+        // Buttons
+        if (interaction.isButton()) {
+
+        }
+
+        // Dropdowns list
+        if (interaction.isStringSelectMenu()) {
+            
+        }
+
     }
 }

@@ -16,8 +16,8 @@ function loadCommands (client) {
 
             client.commands.set(commandFile.data.name, commandFile);
 
-            if (commandFile.developer) developerArray.push(commandFile.data.toJSON())
-            else commandsArray.push(commandFile.data.toJSON())
+            if (commandFile.developer) developerArray.push(commandFile.data.toJSON());
+            else commandsArray.push(commandFile.data.toJSON());
 
             table.addRow(file, "✅");
             continue;
@@ -32,9 +32,9 @@ function loadCommands (client) {
 
     // Set developers commands only on developer guild.
     const developerGuild = client.guilds.cache.get(client.config.developerGuildId);
-    developerGuild.commands.set(developerArray)
+    if (developerGuild) developerGuild.commands.set(developerArray);
 
-    return console.log(table.toString(), "\nLoaded commands.")
+    return console.log(table.toString(), "\nLoaded commands.");
 }
 
 module.exports = { loadCommands };

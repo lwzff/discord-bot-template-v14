@@ -1,5 +1,6 @@
 {
-    "developerGuildId": "Dev Guild ID",
-    "developerLogsId": "Logs Channel ID",
-    "developers": "283212902247432192"
+    "developerGuild": {
+        "id": "dev-guild-id",
+        "logsChannel": "dev-logs-channel-id"
+    }
 }

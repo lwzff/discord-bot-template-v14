@@ -49,10 +49,7 @@ const { loadDb } = require("./handlers/database");
 // Global variables and classes.
 client.commands = new Collection();
 client.config = require("./config.json");
-client.env = process.env;
 client.models = new Collection();
-client.models.settings = require('./models/settings');
-client.functions = require('./functions/classes');
 
 // Crash handling system.
 process.on('unhandledRejection', async (reason, promise) => {

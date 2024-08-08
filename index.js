@@ -1,14 +1,42 @@
-const { Client, Collection } = require("discord.js");
+const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
 
 // Define your client with needed intents.
 // List of all Discord intents -> https://discord.com/developers/docs/topics/gateway#list-of-intents
 // Note: You can write "intents: 32767" to add all Discord' intents if you don't want to write them all.
 
-const client = new Client({ intents: [
-    "Guilds", "GuildMembers", "GuildBans", "GuildEmojisAndStickers", "GuildIntegrations", "GuildWebhooks", "GuildInvites",
-    "GuildVoiceStates", "GuildPresences", "GuildMessages", "GuildMessageReactions", "GuildMessageTyping", "DirectMessages",
-    "DirectMessageReactions", "DirectMessageTyping", "MessageContent", "GuildScheduledEvents" ] 
-});
+const client = new Client(
+    { 
+        intents: [ 
+            GatewayIntentBits.Guilds, 
+            GatewayIntentBits.GuildMembers, 
+            GatewayIntentBits.GuildBans, 
+            GatewayIntentBits.GuildEmojisAndStickers, 
+            GatewayIntentBits.GuildScheduledEvents,
+            GatewayIntentBits.GuildIntegrations, 
+            GatewayIntentBits.GuildWebhooks, 
+            GatewayIntentBits.GuildInvites, 
+            GatewayIntentBits.GuildVoiceStates, 
+            GatewayIntentBits.GuildMessages, 
+            GatewayIntentBits.GuildMessageReactions, 
+            GatewayIntentBits.GuildMessageTyping, 
+            GatewayIntentBits.DirectMessages, 
+            GatewayIntentBits.DirectMessageReactions, 
+            GatewayIntentBits.DirectMessageTyping, 
+            GatewayIntentBits.MessageContent,
+            GatewayIntentBits.GuildMessagePolls
+        ],
+        
+        partials: [
+            Partials.User,
+            Partials.Channel,
+            Partials.Message,
+            Partials.GuildMember,
+            Partials.Reaction,
+            Partials.GuildScheduledEvent,
+            Partials.ThreadMember
+        ]
+    }
+);
 
 // Request and import env configuration.
 require("dotenv").config();

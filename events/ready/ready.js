@@ -6,6 +6,6 @@ module.exports = {
      * @param { Client } client
      */
     async execute (client) {
-        console.log('-> Connected to Discord: ' + client.user.tag);
+        client.log.ready('Connected to Discord: ' + client.user.tag);
     }
 }

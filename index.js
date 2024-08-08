@@ -1,4 +1,5 @@
 const { Client, Collection, GatewayIntentBits, Partials } = require("discord.js");
+const { Logger } = require("term-logger");
 
 // Define your client with needed intents.
 // List of all Discord intents -> https://discord.com/developers/docs/topics/gateway#list-of-intents
@@ -50,6 +51,7 @@ const { loadDb } = require("./handlers/database");
 client.commands = new Collection();
 client.config = require("./config.json");
 client.models = new Collection();
+client.log = Logger;
 
 // Crash handling system.
 process.on('unhandledRejection', async (reason, promise) => {

@@ -4,7 +4,7 @@
 This repository includes my personal bot template (all the base that I own and I am using for my current bots).
 
 ## Need help ?
-[Contribution guidelines for this project](https://github.com/lwzff/discord-bot-template-v14?tab=readme-ov-file#documentation)
+[Try out the documentation!](https://github.com/lwzff/discord-bot-template-v14?tab=readme-ov-file#documentation)
 
 ## Installation
 

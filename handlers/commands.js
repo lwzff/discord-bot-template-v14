@@ -1,25 +1,23 @@
 function loadCommands (client) {
-    const ascii = require("ascii-table");
     const fs = require("fs");
-    const table = new ascii().setHeading("Commands", "Status");
 
     let commandsArray = [];
     let developerArray = [];
 
-    const commandsFolders = fs.readdirSync("./commands");
+    const folders = fs.readdirSync("./commands");
 
-    for (const folder of commandsFolders) {
-        const commandFiles = fs.readdirSync(`./commands/${folder}`).filter( (file) => file.endsWith(".js"));
+    for (const folder of folders) {
+        const files = fs.readdirSync(`./commands/${folder}`).filter( (file) => file.endsWith(".js"));
 
-        for (const file of commandFiles) {
-            const commandFile = require(`../commands/${folder}/${file}`);
+        for (const file of files) {
+            const command = require(`../commands/${folder}/${file}`);
 
-            client.commands.set(commandFile.data.name, commandFile);
+            client.commands.set(command.data.name, command);
 
-            if (commandFile.developer) developerArray.push(commandFile.data.toJSON());
-            else commandsArray.push(commandFile.data.toJSON());
+            if (command.developer) developerArray.push(command.data.toJSON());
+            else commandsArray.push(command.data.toJSON());
 
-            table.addRow(file, "✅");
+            client.log.command(`Successfully registered command ${command.data.name}`)
             continue;
         }
     }
@@ -27,14 +25,14 @@ function loadCommands (client) {
     // Set basic commands on every guild the bot is on.
     client.application.commands.set(commandsArray);
 
-    // Delete all (global) commands.
+    // In case needed, uncomment this line to delete all your bot commands (on every guild the bot is on).
     //client.application.commands.delete();
 
     // Set developers commands only on developer guild.
-    const developerGuild = client.guilds.cache.get(client.config.developerGuildId);
+    const developerGuild = client.guilds.cache.get(client?.config?.developerGuild?.id);
     if (developerGuild) developerGuild.commands.set(developerArray);
 
-    return console.log(table.toString(), "\nLoaded commands.");
+    return;
 }
 
 module.exports = { loadCommands };
